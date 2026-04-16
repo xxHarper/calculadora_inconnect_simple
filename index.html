@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora Inconnect 0.70%</title>
+  <link rel="stylesheet" href="./css/style.css" />
+<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=DN-G9z7OZZXLdowZaiT7QI2fbpziU4ykmgjxGDcvP8b_0c3GqLz-V11H4e-K78AeRmpdKNiqUimvUMUFDO94m5GQXwOCJir9JzC-Bhd3s-viRo50BZCyPUVq-qpeiZh8vqtvdRDXf2bCoxDA1IZXr-_M7jwf4w1T7b39x8x4VcTciEYPC8Borx_OcmCVpFLp9soBlISPDN6zYKyINw37mHflfEVXbLJ_bycXJyI3e70IhkM5qYAZ3AywLAhdcyoQTwK_FW8r8liqgo3ef6jm8g" charset="UTF-8"></script></head>
+<body>
+  <main class="page">
+    <section class="calc-modal">
+      <button class="close-btn" type="button" aria-label="Cerrar">×</button>
+
+      <div class="calc-shell">
+        <header class="calc-head">
+          <!-- <span class="mini-badge">Calculadora simplificada</span> -->
+          <h1>Calcula con la tasa especial del 0.70%</h1>
+          <p>
+            Versión simplificada, usa la tasa base del 0.70% más IVA
+            para venta regular y MSI de PROSA.
+          </p>
+        </header>
+
+        <div class="calc-tabs">
+          <button class="calc-tab active" type="button" data-mode="regular">
+            <span class="tab-icon">💳</span>
+            <span>Venta regular</span>
+          </button>
+
+          <button class="calc-tab" type="button" data-mode="months">
+            <span class="tab-icon">◌</span>
+            <span>Venta a meses</span>
+          </button>
+        </div>
+
+        <div class="calc-divider">
+          <span class="divider-line active" id="regularLine"></span>
+          <span class="divider-line" id="monthsLine"></span>
+        </div>
+
+        <section class="calc-step active" id="step-regular-input">
+          <h2 class="step-title">Ingresa el monto de la venta</h2>
+
+          <div class="input-wrap">
+            <label class="sr-only" for="amountRegular">Monto de la venta</label>
+            <input
+              id="amountRegular"
+              class="calc-input"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Monto de la venta"
+            />
+          </div>
+
+          <div class="rate-pill">Tasa base: 0.70% + IVA 16%</div>
+
+          <p class="step-helper">
+            Esta versión simplificada usa la tasa promocional del 0.70% para mostrar
+            un escenario fácil de entender.
+          </p>
+
+          <button class="primary-btn" type="button" id="btnRegularNext">
+            Calcular
+          </button>
+        </section>
+
+        <section class="calc-step" id="step-regular-result">
+          <h2 class="result-title" id="regularResultTitle">
+            Para una venta de $1,000.00 recibes
+          </h2>
+
+          <div class="result-amount" id="regularResultAmount">$991.88</div>
+
+          <div class="result-breakdown">
+            <div class="breakdown-row">
+              <span>0.70%</span>
+              <span>Comisión por transacción</span>
+              <strong id="regularCommission">$7.00</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>16%</span>
+              <span>IVA de la comisión</span>
+              <strong id="regularVat">$1.12</strong>
+            </div>
+            <div class="breakdown-row total-row">
+              <span>0.81%</span>
+              <span>Comisión total aplicada</span>
+              <strong id="regularTotalFee">$8.12</strong>
+            </div>
+          </div>
+
+          <button class="primary-btn" type="button" id="btnRegularReset">
+            Calcular otra cantidad
+          </button>
+        </section>
+
+        <section class="calc-step" id="step-months-select">
+          <h2 class="step-title">Venta a meses sin intereses</h2>
+
+          <div class="months-picker" id="monthsPicker">
+            <button class="month-chip active" type="button" data-month="3">3</button>
+            <button class="month-chip" type="button" data-month="6">6</button>
+            <button class="month-chip" type="button" data-month="9">9</button>
+            <button class="month-chip" type="button" data-month="12">12</button>
+          </div>
+
+          <div class="input-wrap input-wrap-small">
+            <label class="sr-only" for="amountMonths">Monto de la venta</label>
+            <input
+              id="amountMonths"
+              class="calc-input"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Monto de la venta"
+            />
+          </div>
+
+          <div class="rate-pill">Base 0.70% + sobretasa MSI + IVA</div><br />
+
+          <!-- <p class="step-helper">
+            Para MSI se usa la tabla “Otros Bancos”, manteniendo la tasa base del 0.70%.
+          </p> -->
+
+          <button class="primary-btn" type="button" id="btnMonthsCalculate">
+            Calcular
+          </button>
+        </section>
+
+        <section class="calc-step" id="step-months-result">
+          <h2 class="result-title" id="monthsResultTitle">
+            Para una venta de $1,000.00 recibes
+          </h2>
+
+          <div class="months-inline">
+            <span>Cantidad de meses a ofrecer</span>
+            <div class="months-inline-picker" id="monthsInlinePicker">
+              <button class="month-chip active" type="button" data-month="3">3</button>
+              <button class="month-chip" type="button" data-month="6">6</button>
+              <button class="month-chip" type="button" data-month="9">9</button>
+              <button class="month-chip" type="button" data-month="12">12</button>
+            </div>
+          </div>
+
+          <div class="result-amount" id="monthsResultAmount">$935.04</div>
+
+          <div class="result-breakdown">
+            <div class="breakdown-row">
+              <span>0.70%</span>
+              <span>Comisión base</span>
+              <strong id="monthsBaseAmount">$7.00</strong>
+            </div>
+            <div class="breakdown-row">
+              <span id="monthsExtraRate">4.90%</span>
+              <span>Sobretasa MSI</span>
+              <strong id="monthsExtraAmount">$49.00</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>16%</span>
+              <span>IVA sobre comisión</span>
+              <strong id="monthsVat">$8.96</strong>
+            </div>
+            <div class="breakdown-row total-row">
+              <span id="monthsTotalRate">6.50%</span>
+              <span>Comisión total aplicada</span>
+              <strong id="monthsTotalFee">$64.96</strong>
+            </div>
+          </div>
+
+          <button class="primary-btn" type="button" id="btnMonthsReset">
+            Calcular otra cantidad
+          </button>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
